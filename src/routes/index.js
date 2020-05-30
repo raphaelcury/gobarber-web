@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
@@ -9,14 +9,12 @@ import Profile from '../pages/Profile';
 
 export default function Routes() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={SignIn} />
-        <Route path="/signup" exact component={SignUp} />
+    <Switch>
+      <Route path="/" exact component={SignIn} />
+      <Route path="/signup" exact component={SignUp} />
 
-        <Route path="/dashboard" exact component={Dashboard} />
-        <Route path="/profile" exact component={Profile} />
-      </Switch>
-    </BrowserRouter>
+      <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/profile" exact component={Profile} />
+    </Switch>
   );
 }
