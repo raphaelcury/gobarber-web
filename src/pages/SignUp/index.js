@@ -1,13 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-// import { Container } from './styles';
+import logo from '~/assets/logo.svg';
 
-function SignUp() {
+export default function SignIn() {
   return (
-    <div>
-      <p>SignUp</p>
-    </div>
+    <>
+      <img src={logo} alt="Logo" />
+      <form>
+        <input type="text" placeholder="Seu nome" />
+        <input type="email" placeholder="Seu e-mail" />
+        <input type="password" placeholder="Sua senha" />
+        <button type="submit">Entrar</button>
+        <Link to="/">Já tenho conta</Link>
+      </form>
+    </>
   );
 }
-
-export default SignUp;

@@ -24,7 +24,7 @@ export default createGlobalStyle`
 
   body, input, button {
     font-weight: bold;
-    font-size: 36px;
+    font-size: 14px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
   }
 
