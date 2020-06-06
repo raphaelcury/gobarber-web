@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 315px;
+  max-width: 250px;
   text-align: center;
 
   form {
@@ -21,9 +21,16 @@ export const Content = styled.div`
     align-items: center;
     margin-bottom: 10px;
 
+    span {
+      color: #f08080;
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+
     input {
       background: rgba(0, 0, 0, 0.1);
       height: 44px;
+      width: 100%;
       width: 250px;
       border-radius: 4px;
       border: 0;
