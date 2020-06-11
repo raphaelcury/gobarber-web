@@ -1,4 +1,5 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
+import history from '~/services/history';
 
 import api from '~/services/api';
 import { signinSuccess } from './actions';
@@ -12,6 +13,7 @@ function* signIn({ payload }) {
     return;
   }
   yield put(signinSuccess(token, user));
+  history.push('/dashboard');
 }
 
 export default all([takeLatest('@auth/SIGNIN_REQUEST', signIn)]);
