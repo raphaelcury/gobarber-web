@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
@@ -18,8 +18,9 @@ const schema = Yup.object().shape({
     .required('A senha é obrigatória'),
 });
 
-export default function SignIn() {
+export default function SignUp() {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.auth.loading);
 
   function handleSubmit({ name, email, password }) {
     dispatch(signupRequest(name, email, password));
@@ -32,7 +33,9 @@ export default function SignIn() {
         <Input name="name" placeholder="Seu nome" />
         <Input name="email" type="email" placeholder="Seu e-mail" />
         <Input name="password" type="password" placeholder="Sua senha" />
-        <button type="submit">Entrar</button>
+        <button type="submit">
+          {loading ? 'Criando...' : 'Criar usuário'}
+        </button>
         <Link to="/">Já tenho conta</Link>
       </Form>
     </>

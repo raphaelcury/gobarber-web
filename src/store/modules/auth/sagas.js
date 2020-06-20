@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import history from '~/services/history';
 
 import api from '~/services/api';
-import { signinSuccess, signFailure } from './actions';
+import { signinSuccess, signupSuccess, signFailure } from './actions';
 
 function* signIn({ payload }) {
   try {
@@ -26,15 +26,18 @@ function* signIn({ payload }) {
 function* signUp({ payload }) {
   try {
     const { name, email, password } = payload;
-    yield call(api.post, 'users', {
+    const response = yield call(api.post, 'users', {
       name,
       email,
       password,
       provider: true,
     });
+    const user = response.data;
+    toast.success(`Usuário ${user.name} criado com sucesso.`);
+    yield put(signupSuccess(user));
   } catch (error) {
     toast.error(`Erro no cadastro. Verifique seus dados.`);
-    console.tron.error(error);
+    yield put(signFailure());
   }
 }
 

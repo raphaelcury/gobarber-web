@@ -5,6 +5,7 @@ const INITIAL_STATE = { token: null, signed: false, loading: false };
 export default function auth(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
+      case '@auth/SIGNUP_REQUEST':
       case '@auth/SIGNIN_REQUEST':
         draft.loading = true;
         break;
@@ -13,6 +14,7 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.signed = true;
         draft.loading = false;
         break;
+      case '@auth/SIGNUP_SUCCESS':
       case '@auth/SIGN_FAILURE':
         draft.loading = false;
         break;
