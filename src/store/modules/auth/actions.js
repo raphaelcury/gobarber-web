@@ -18,6 +18,17 @@ export function signinSuccess(token, user) {
   };
 }
 
+export function signupRequest(name, email, password) {
+  return {
+    type: '@auth/SIGNUP_REQUEST',
+    payload: {
+      name,
+      email,
+      password,
+    },
+  };
+}
+
 export function signFailure() {
   return { type: '@auth/SIGN_FAILURE' };
 }

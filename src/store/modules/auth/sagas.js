@@ -23,4 +23,22 @@ function* signIn({ payload }) {
   }
 }
 
-export default all([takeLatest('@auth/SIGNIN_REQUEST', signIn)]);
+function* signUp({ payload }) {
+  try {
+    const { name, email, password } = payload;
+    yield call(api.post, 'users', {
+      name,
+      email,
+      password,
+      provider: true,
+    });
+  } catch (error) {
+    toast.error(`Erro no cadastro. Verifique seus dados.`);
+    console.tron.error(error);
+  }
+}
+
+export default all([
+  takeLatest('@auth/SIGNIN_REQUEST', signIn),
+  takeLatest('@auth/SIGNUP_REQUEST', signUp),
+]);
