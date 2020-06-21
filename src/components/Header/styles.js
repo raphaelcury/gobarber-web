@@ -27,13 +27,19 @@ export const Content = styled.div`
       color: #7159c1;
     }
   }
+
+  aside {
+    display: flex;
+    align-items: center;
+  }
 `;
 
-export const Profile = styled.aside`
+export const Profile = styled.div`
   display: flex;
   align-items: center;
   padding-left: 20px;
   border-left: 1px solid #eee;
+  margin-left: 20px;
   div {
     display: flex;
     flex-direction: column;
