@@ -33,7 +33,6 @@ export const NotificationList = styled.div`
   top: calc(100% + 30px);
   left: calc(50% - 130px);
   background: rgba(0, 0, 0, 0.6);
-  padding: 20px;
   border-radius: 4px;
   display: ${(props) => (props.visible ? 'block' : 'none')};
 
@@ -52,6 +51,7 @@ export const NotificationList = styled.div`
 
 export const Scroll = styled(PerfectScrollBar)`
   max-height: 260px;
+  padding: 20px;
 `;
 
 export const Notification = styled.div`
