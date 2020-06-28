@@ -34,13 +34,13 @@ export default function Notifications() {
     loadNotifications();
   }, []);
 
-  function toggleVisible() {
-    setVisible(!visible);
-  }
-
   async function toggleRead(id) {
     await api.put(`notifications/${id}`);
     loadNotifications();
+  }
+
+  function toggleVisible() {
+    setVisible(!visible);
   }
 
   return (
