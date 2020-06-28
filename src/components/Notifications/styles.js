@@ -68,15 +68,14 @@ export const Notification = styled.div`
   time {
     opacity: 0.6;
     font-size: 12px;
+    display: block;
   }
   button {
     border: 0;
     background: none;
     font-size: 12px;
     color: ${lighten(0.2, '#7159c1')};
-    padding: 0 5px;
-    margin: 0 5px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 5px;
   }
   ${(props) =>
     props.unread &&
@@ -88,6 +87,7 @@ export const Notification = styled.div`
         height: 8px;
         background: #ff892e;
         border-radius: 50%;
+        margin-left: 10px;
       }
     `}
 `;
