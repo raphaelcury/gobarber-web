@@ -15,6 +15,7 @@ function* signIn({ payload }) {
       yield put(signFailure());
       return;
     }
+    api.defaults.headers.Authorization = `Bearer ${token}`;
     yield put(signinSuccess(token, user));
     history.push('/dashboard');
   } catch (error) {
