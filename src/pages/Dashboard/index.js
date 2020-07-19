@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
+import { format, subDays, addDays } from 'date-fns';
+import ptBr from 'date-fns/locale/pt-BR';
 
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
@@ -10,14 +12,29 @@ import {
 } from './styles';
 
 function Dashboard() {
+  const [date, setDate] = useState(new Date());
+
+  const formattedDate = useMemo(
+    () => format(date, "d 'de' MMMM", { locale: ptBr }),
+    [date]
+  );
+
+  function handlePrevDay() {
+    setDate(subDays(date, 1));
+  }
+
+  function handleNextDay() {
+    setDate(addDays(date, 1));
+  }
+
   return (
     <Container>
       <ScheduleHeader>
-        <button type="button">
+        <button type="button" onClick={handlePrevDay}>
           <MdChevronLeft size={36} color="#fff" />
         </button>
-        <strong>19 de Julho</strong>
-        <button type="button">
+        <strong>{formattedDate}</strong>
+        <button type="button" onClick={handleNextDay}>
           <MdChevronRight size={36} color="#fff" />
         </button>
       </ScheduleHeader>
