@@ -19,7 +19,7 @@ function AvatarInput({ name }) {
       registerField({
         name,
         ref: ref.current,
-        path: 'dataset.fileId',
+        path: 'dataset.file',
       });
     }
   }, [ref, registerField, name]);
@@ -46,7 +46,7 @@ function AvatarInput({ name }) {
           type="file"
           id="avatar"
           accept="image/*"
-          data-fileId={fileId}
+          data-file={fileId}
           onChange={handleChange}
           ref={ref}
         />
