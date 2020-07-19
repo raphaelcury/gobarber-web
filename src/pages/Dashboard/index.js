@@ -1,14 +1,22 @@
 import React from 'react';
 
-import api from '~/services/api';
-// import { Container } from './styles';
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+
+import { Container } from './styles';
 
 function Dashboard() {
-  api.get('providers');
   return (
-    <div>
-      <p>Dashboard</p>
-    </div>
+    <Container>
+      <header>
+        <button type="button">
+          <MdChevronLeft size={36} color="#fff" />
+        </button>
+        <strong>19 de Julho</strong>
+        <button type="button">
+          <MdChevronRight size={36} color="#fff" />
+        </button>
+      </header>
+    </Container>
   );
 }
 
