@@ -39,6 +39,7 @@ export const ScheduleItem = styled.li`
   border-radius: 4px;
   padding: 10px;
   opacity: ${(props) => (props.past ? 0.6 : 1)};
+
   strong {
     display: block;
     font-size: 18px;
