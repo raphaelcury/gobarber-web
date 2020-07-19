@@ -14,6 +14,8 @@ export default function user(state = INITIAL_STATE, action) {
       });
     case '@user/UPDATE_PROFILE_FAILURE':
       return state;
+    case '@auth/SIGNOUT':
+      return INITIAL_STATE;
     default:
       return state;
   }
