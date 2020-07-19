@@ -9,8 +9,17 @@ import {
 
 function* updateProfile({ payload }) {
   try {
-    const { name, email, ...rest } = payload;
-    const profile = { name, email, ...(rest.oldPassword ? rest : {}) };
+    console.tron.log(
+      `UPDATEPROFILEREQUEST: ${payload.name}, ${payload.email}, ${payload.avatar_id})
+      }`
+    );
+    const { name, email, avatar_id, ...rest } = payload;
+    const profile = {
+      name,
+      email,
+      avatar_id,
+      ...(rest.oldPassword ? rest : {}),
+    };
     const response = yield call(api.put, 'users', profile);
     toast.success('Usuário atualizado com sucesso.');
     yield put(updateProfileSuccess(response.data));
