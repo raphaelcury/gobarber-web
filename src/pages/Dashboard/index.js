@@ -58,7 +58,7 @@ function Dashboard() {
             available={time.available}
           >
             <strong>{time.time}</strong>
-            <span>{time.name}</span>
+            <span>{time.name ? time.name : 'Em aberto'}</span>
           </ScheduleItem>
         ))}
       </ScheduleList>
