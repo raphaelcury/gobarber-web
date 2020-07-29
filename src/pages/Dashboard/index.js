@@ -1,8 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { format, subDays, addDays } from 'date-fns';
 import ptBr from 'date-fns/locale/pt-BR';
 
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+
+import api from '~/services/api';
 
 import {
   Container,
@@ -13,11 +15,20 @@ import {
 
 function Dashboard() {
   const [date, setDate] = useState(new Date());
+  const [fullSchedule, setFullSchedule] = useState([]);
 
   const formattedDate = useMemo(
     () => format(date, "d 'de' MMMM", { locale: ptBr }),
     [date]
   );
+
+  useEffect(() => {
+    async function loadSchedule() {
+      const response = await api.get('schedule', { params: { date } });
+      setFullSchedule([...response.data]);
+    }
+    loadSchedule();
+  }, [date]);
 
   function handlePrevDay() {
     setDate(subDays(date, 1));
@@ -40,22 +51,16 @@ function Dashboard() {
       </ScheduleHeader>
 
       <ScheduleList>
-        <ScheduleItem past>
-          <strong>08:00h</strong>
-          <span>Raphael Cury</span>
-        </ScheduleItem>
-        <ScheduleItem past available>
-          <strong>09:00h</strong>
-          <span>Em aberto</span>
-        </ScheduleItem>
-        <ScheduleItem available>
-          <strong>10:00h</strong>
-          <span>Em aberto</span>
-        </ScheduleItem>
-        <ScheduleItem>
-          <strong>11:00h</strong>
-          <span>Raphael Cury</span>
-        </ScheduleItem>
+        {fullSchedule.map((time) => (
+          <ScheduleItem
+            key={time.time}
+            past={time.past}
+            available={time.available}
+          >
+            <strong>{time.time}</strong>
+            <span>{time.name}</span>
+          </ScheduleItem>
+        ))}
       </ScheduleList>
     </Container>
   );
